@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head></head>
+<body>
+    <h1 id="Question">Q4</h1>
+    <h3 id="R1">R1</h3>
+    <h3 id="R2">R2</h3>
+    <h3 id="R3">R3</h3>
+    <h3 id="R4">R4</h3>
+    <script>
+        document.addEventListener("keydown", SpaceBar);
+        function NextQuestion(){
+            let questionText = questions[NQuestion].Q;
+            let reponse1 = (questions[NQuestion]).reponse[0];
+            let reponse2 = (questions[NQuestion]).reponse[1];
+            let reponse3 = (questions[NQuestion]).reponse[2];
+            let reponse4 = (questions[NQuestion]).reponse[3];
+            const Q1 = document.getElementById("Question");
+            Q1.innerHTML = questionText;
+
+            const R1 = document.getElementById("R1");
+            R1.innerHTML = reponse1;
+
+            const R2 = document.getElementById("R2");
+            R2.innerHTML = reponse2;
+
+            const R3 = document.getElementById("R3");
+            R3.innerHTML = reponse3;
+
+            const R4 = document.getElementById("R4");
+            R4.innerHTML = reponse4;
+        }
+        let NQuestion = -1;
+        function SpaceBar(e){
+            if (e.key === " " || e.key === "Spacebar"){
+                NQuestion += 1;
+                console.log(NQuestion);
+            }
+            NextQuestion();
+        }
+        var questions = [
+            {"Q":"Q1","reponse":["R1", "R2", "R3", "R4"]},
+            {"Q":"Q2","reponse":["R1", "R2", "R3", "R4"]},
+            {"Q":"Q3","reponse":["R1", "R2", "R3", "R4"]},
+            {"Q":"Q4","reponse":["R1", "R2", "R3", "R4"]}
+        ]
+    </script>
+</body>
+</html>
