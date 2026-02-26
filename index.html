@@ -1,55 +1,95 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <style>
-        #Question {
-            text-align: center;
-        }
-    </style>
-</head>
-<body>
-    <h1 id="Question">Welcome press space to start</h1>
-    <button id="R1"></button>
-    <button id="R2"></button><br>
-    <button id="R3"></button>
-    <button id="R4"></button>
-    <script>
-        document.addEventListener("keydown", SpaceBar);
-        function NextQuestion(){
-            let questionText = questions[NQuestion].Q;
-            let reponse1 = (questions[NQuestion]).reponse[0];
-            let reponse2 = (questions[NQuestion]).reponse[1];
-            let reponse3 = (questions[NQuestion]).reponse[2];
-            let reponse4 = (questions[NQuestion]).reponse[3];
-            const Q1 = document.getElementById("Question");
-            Q1.innerHTML = questionText;
+	<head>
+		<style>
+			#Question {
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<h1 id="Question">Welcome press space to start</h1>
+		<button id="R1" onclick="MettreRC1()"></button>
+		<button id="R2" onclick="MettreRC2()"></button><br>
+		<button id="R3" onclick="MettreRC3()"></button>
+		<button id="R4" onclick="MettreRC4()"></button>
+		<script>
+			console.log("HERE");
+			let RChoisie = "";
+			let BonneReponse = "";
+			let Score = 0;
+			function MettreRC1(){
+				RChoisie = "R1";
+				VerifyReponse();
+			}
+			function MettreRC2(){
+				RChoisie = "R2";
+				VerifyReponse();
+			}
+			function MettreRC3(){
+				RChoisie = "R3";
+				VerifyReponse();
+			}	
+			function MettreRC4(){
+				RChoisie = "R4";
+				VerifyReponse();
+			}
+			document.addEventListener("keydown", SpaceBar);
+			function VerifyReponse(){
+				if (RChoisie == BonneReponse){
+					alert("Bravo! C'est la bonne reponse!");
+					Score += 1;
+				}else{
+					alert("Non!C'est la mauvaise reponse!");
+				}
+				NQuestion += 1;
+				NextQuestion();
+			}
+			function NextQuestion(){
+				let questionText = (questions[NQuestion]).Q;
+				let reponse1 = (questions[NQuestion]).reponse[0];
+				let reponse2 = (questions[NQuestion]).reponse[1];
+				let reponse3 = (questions[NQuestion]).reponse[2];
+				let reponse4 = (questions[NQuestion]).reponse[3];
+				BonneReponse = (questions[NQuestion]).reponse[4];
+				
+				const Q1 = document.getElementById("Question");
+				Q1.innerHTML = questionText;
+				
+				
+				const R1 = document.getElementById("R1");
+				R1.innerHTML = reponse1;
 
-            const R1 = document.getElementById("R1");
-            R1.innerHTML = reponse1;
+				const R2 = document.getElementById("R2");
+				R2.innerHTML = reponse2;
 
-            const R2 = document.getElementById("R2");
-            R2.innerHTML = reponse2;
+				const R3 = document.getElementById("R3");
+				R3.innerHTML = reponse3;
 
-            const R3 = document.getElementById("R3");
-            R3.innerHTML = reponse3;
-
-            const R4 = document.getElementById("R4");
-            R4.innerHTML = reponse4;
-        }
-        let NQuestion = -1;
-        function SpaceBar(e){
-            if (e.key === " " || e.key === "Spacebar"){
-                NQuestion += 1;
-                console.log(NQuestion);
-            }
-            NextQuestion();
-        }
-        var questions = [
-            {"Q":"Q1","reponse":["R1", "R2", "R3", "R4"]},
-            {"Q":"Q2","reponse":["R1", "R2", "R3", "R4"]},
-            {"Q":"Q3","reponse":["R1", "R2", "R3", "R4"]},
-            {"Q":"Q4","reponse":["R1", "R2", "R3", "R4"]}
-        ]
-    </script>
-</body>
+				const R4 = document.getElementById("R4");
+				R4.innerHTML = reponse4;
+				if (NQuestion == 4){
+					alert(Score);
+				}
+			}
+			let NQuestion = -1;
+			function SpaceBar(e){
+				if (e.key === " " || e.key === "Spacebar"){
+					if (NQuestion >= 0){
+					alert("You skipted this question -1 !");
+					Score -= 1;
+					}
+					NQuestion += 1;
+					console.log(NQuestion);
+				}
+				NextQuestion();
+			}
+			var questions = [
+				{"Q":"Q1","reponse":["R1", "R2", "R3", "R4","R1"]},
+				{"Q":"Q2","reponse":["R1", "R2", "R3", "R4","R1"]},
+				{"Q":"Q3","reponse":["R1", "R2", "R3", "R4","R1"]},
+				{"Q":"Q4","reponse":["R1", "R2", "R3", "R4","R1"]}
+			]
+		</script>
+	</body>
 </html>
