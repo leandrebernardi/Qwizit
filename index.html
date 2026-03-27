@@ -35,7 +35,7 @@
 		</div>
 		<div id="resultats">
 			<p id="gagne"></p>
-			<button id="nextQuestion" onclik="resultsToQuestions()">Go To Next Question</button>
+			<button id="nextQuestion" onclick="resultsToQuestions()">Go To Next Question</button>
 		</div>
 		<script>
 			var questions = [
@@ -52,7 +52,7 @@
 			
 			function resultatQuestion(TEXT){
 				document.getElementById("resultats").style.display="block";
-				document.getElementById("resultats").textContent=TEXT;
+				gagne.textContent=TEXT;
 				QuestionsReponses.style.display="none";
 				}
 			function MettreRC1(){
